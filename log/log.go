@@ -46,50 +46,34 @@ const (
 )
 
 func (l Log) Debug(v ...interface{}) {
-	//fmt.Fprintf(os.Stdout,"[Debug] [%s] %s ", l.Tag, time.Now().Format(timeFormat))
-	//fmt.Fprintln(os.Stdout, v...)
 	l.logPrintln("Debug", v...)
 }
 
 func (l Log) Debugf(format string, v ...interface{}) {
-	//fmt.Fprintf(os.Stdout, "[Debug] [%s] %s ", l.Tag, time.Now().Format(timeFormat))
-	//fmt.Fprintf(os.Stdout, format, v...)
 	l.logPrintf("Debug", format, v...)
 }
 
 func (l Log) Error(v ...interface{}) {
-	//fmt.Fprintf(os.Stdout,"[Error] [%s] %s ", l.Tag, time.Now().Format(timeFormat))
-	//fmt.Fprintln(os.Stdout, v...)
 	l.logPrintln("Error", v...)
 }
 
 func (l Log) Errorf(format string, v ...interface{}) {
-	//fmt.Fprintf(os.Stdout, "[Error] [%s] %s ", l.Tag, time.Now().Format(timeFormat))
-	//fmt.Fprintf(os.Stdout, format, v...)
 	l.logPrintf("Error", format, v)
 }
 
 func (l Log) Info(v ...interface{}) {
-	//fmt.Fprintf(os.Stdout,"[Info] [%s] %s ", l.Tag, time.Now().Format(timeFormat))
-	//fmt.Fprintln(os.Stdout, v...)
 	l.logPrintln("Info", v...)
 }
 
 func (l Log) Infof(format string, v ...interface{}) {
-	//fmt.Fprintf(os.Stdout, "[Info] [%s] %s ", l.Tag, time.Now().Format(timeFormat))
-	//fmt.Fprintf(os.Stdout, format, v...)
 	l.logPrintf("Info", format, v...)
 }
 
 func (l Log) Warn(v ...interface{}) {
-	//fmt.Fprintf(os.Stdout,"[Warn] [%s] %s ", l.Tag, time.Now().Format(timeFormat))
-	//fmt.Fprintln(os.Stdout, v...)
 	l.logPrintln("Warn", v...)
 }
 
 func (l Log) Warnf(format string, v ...interface{}) {
-	//fmt.Fprintf(os.Stdout, "[Warn] [%s] %s ", l.Tag, time.Now().Format(timeFormat))
-	//fmt.Fprintf(os.Stdout, format, v...)
 	l.logPrintf("Warn", format, v...)
 }
 
