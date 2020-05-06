@@ -15,7 +15,7 @@ import (
 func Init() *gin.Engine {
 	router := gin.New()
 
-	cookieStore := sessions.NewCookieStore([]byte("MTU4ODUxNTQ4NnxEdi1CQkFFQ180SUFBUkFCRUFBQUJQLUNBQUE9fHRkSpeeNYnec4d2dJA4hPIsXgTJbyBDljFRehZOVS4w"))
+	cookieStore := sessions.NewCookieStore([]byte("ss"))
 	store := utils.NewStore(cookieStore)
 	router.Use(ginsessions.Sessions("session_id", store))
 
