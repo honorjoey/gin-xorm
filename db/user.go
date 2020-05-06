@@ -8,11 +8,12 @@ import (
 
 type UserDao struct {}
 
-func (UserDao) QueryUser() *[]models.User {
+func (UserDao) QueryUser(phone string) *[]models.User {
 	var user []models.User
-	err := x.Find(&user)
+	err := x.Where("telphone=?", phone).Find(&user)
 	if err != nil {
-		dbLogger.Error("QueryUser ", err)
+		xLog.Error("QueryUser ", err)
 	}
+	xLog.Info("Successful")
 	return &user
 }

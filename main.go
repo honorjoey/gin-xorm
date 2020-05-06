@@ -2,8 +2,8 @@ package main
 
 import (
 	"flag"
-	"github.com/honorjoey/gin-xorm/router"
 	"github.com/gin-gonic/gin"
+	"github.com/honorjoey/gin-xorm/router"
 	"log"
 )
 

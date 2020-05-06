@@ -5,20 +5,27 @@ import (
 	"github.com/go-ini/ini"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/go-xorm/xorm"
-	"log"
+	"github.com/honorjoey/gin-xorm/log"
 	"time"
 	"xorm.io/core"
 )
-
+// mysql
 var x *xorm.Engine
+//var dbLogger core.ILogger
 
-var dbLogger core.ILogger
+type XLogger struct {
+	log.Log
+}
+
+var xLog XLogger
 
 func init() {
+	xLog.Tag = "MySQL"
+
 	var err error
 	cfg, err := ini.Load("config/config.ini")
 	if err != nil {
-		log.Fatal(err)
+		xLog.Error(err)
 	}
 
 	username := cfg.Section("mysql").Key("username").Value()
@@ -31,7 +38,7 @@ func init() {
 
 	x, err = xorm.NewEngine("mysql", dbUrl)
 	if err != nil {
-		log.Println(err)
+		xLog.Error(err)
 	}
 	//defer engine.Close()
 
@@ -44,10 +51,10 @@ func init() {
 
 	x.SetMapper(core.SnakeMapper{})
 
-	dbLogger = x.Logger()
+	//dbLogger := x.Logger()
 
 	if err = x.Ping(); err != nil {
-		log.Println(err)
+		xLog.Error(err)
 	}
 
 	timer := time.NewTicker(time.Minute * 30)
@@ -55,7 +62,7 @@ func init() {
 		for _ = range timer.C {
 			err = x.Ping()
 			if err != nil {
-				log.Fatalf("db 	connect error: %#v\n", err.Error())
+				xLog.Error("db 	connect error: %#v\n", err.Error())
 			}
 		}
 	}(x)
