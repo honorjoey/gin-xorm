@@ -30,7 +30,7 @@ templates/goxorm
 
 在项目根目录下
 ```shell script
-xorm reverse mysql "root:root@tcp(192.168.199.236:3306)/{dbname}?charset=utf8" templates/goxorm
+$ xorm reverse mysql "root:root@tcp(192.168.199.236:3306)/{dbname}?charset=utf8" templates/goxorm
 ```
 `{dbname}`即要生成库表结构的数据库名称。`templates/goxorm`前面已介绍，这里可以自己在项目根目录创建，然后把`go-xorm`对应文件复制过来，或者直接在命令里指定到你电脑里面的对应目录， 最后还有一个参数，是指定生成库表结构文件的目录的，不写的话默认在当前目录下创建`models`文件夹。
 
