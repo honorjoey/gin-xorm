@@ -16,7 +16,7 @@ $ ./gin-xorm
 使用`xorm`因为要写对应的库表结构的`struct`，有点麻烦，但是`xorm`提供了工具来自动生成对应的库表结构。
 #### 安装
 安装过程见中文文档的`XORM 工具`部分
-![http://www.admpub.com:8080/xorm-manual-zh-CN/](http://www.admpub.com:8080/xorm-manual-zh-CN/)
+[http://www.admpub.com:8080/xorm-manual-zh-CN/](http://www.admpub.com:8080/xorm-manual-zh-CN/)
 #### 生成
 
 首先介绍`templates/goxorm`，是`github.com/go-xorm/cmd/xorm/templates/goxorm`
@@ -42,7 +42,7 @@ models
 ```
 
 其他数据库的使用情参阅文档
-![http://www.admpub.com:8080/xorm-manual-zh-CN/](http://www.admpub.com:8080/xorm-manual-zh-CN/)
+[http://www.admpub.com:8080/xorm-manual-zh-CN/](http://www.admpub.com:8080/xorm-manual-zh-CN/)
 
 ### swagger的使用
 #### 安装swag
