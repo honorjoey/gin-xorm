@@ -12,7 +12,7 @@ import (
 	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
-func Init() *gin.Engine {
+	func Init() *gin.Engine {
 	router := gin.New()
 
 	cookieStore := sessions.NewCookieStore([]byte("ss"))

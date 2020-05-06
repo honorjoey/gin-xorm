@@ -89,6 +89,19 @@ docs
 └── swagger.yaml
 ```
 
+`router/router.go`文件中
+```golang
+import (
+    _ "github.com/honorjoey/gin-xorm/docs"
+    ginSwagger "github.com/swaggo/gin-swagger"
+    "github.com/swaggo/gin-swagger/swaggerFiles"
+)
+
+func  Init() *gin.Engine {
+    router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+}
+```
+
 #### 验证
 在浏览器输入`http://localhost:8080/swagger/index.html`即可看到`api`文档。
 
