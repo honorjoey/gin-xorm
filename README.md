@@ -12,6 +12,38 @@ $ go build
 $ ./gin-xorm
 ```
 
+### xorm工具的使用
+使用`xorm`因为要写对应的库表结构的`struct`，有点麻烦，但是`xorm`提供了工具来自动生成对应的库表结构。
+#### 安装
+安装过程见中文文档的`XORM 工具`部分
+![http://www.admpub.com:8080/xorm-manual-zh-CN/](http://www.admpub.com:8080/xorm-manual-zh-CN/)
+#### 生成
+
+首先介绍`templates/goxorm`，是`github.com/go-xorm/cmd/xorm/templates/goxorm`
+文件结构
+```shell script
+templates/goxorm
+├── config
+└── struct.go.tpl
+```
+定义了生成库表结构的一些参数，具体可参阅官方文档。
+
+在项目根目录下
+```shell script
+xorm reverse mysql "root:root@tcp(192.168.199.236:3306)/{dbname}?charset=utf8" templates/goxorm
+```
+`{dbname}`即要生成库表结构的数据库名称。`templates/goxorm`前面已介绍，这里可以自己在项目根目录创建，然后把`go-xorm`对应文件复制过来，或者直接在命令里指定到你电脑里面的对应目录， 最后还有一个参数，是指定生成库表结构文件的目录的，不写的话默认在当前目录下创建`models`文件夹。
+
+命令执行完成会在当前目录下创建`models`文件夹，并在文件夹下创建库表结构`go`文件。
+```shell script
+models
+└── user.go
+...
+```
+
+其他数据库的使用情参阅文档
+![http://www.admpub.com:8080/xorm-manual-zh-CN/](http://www.admpub.com:8080/xorm-manual-zh-CN/)
+
 ### swagger的使用
 #### 安装swag
 ```shell script
