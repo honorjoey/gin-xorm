@@ -2,12 +2,12 @@ package controller
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/honorjoey/gin-xorm/db"
+	"github.com/honorjoey/gin-xorm/database"
 	"net/http"
 )
 
 type UserController struct {
-	UserDao db.UserDao
+	UserDao database.UserDao
 }
 
 // @Summary List users

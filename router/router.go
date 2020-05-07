@@ -6,7 +6,7 @@ import (
 	"github.com/gorilla/sessions"
 	"github.com/honorjoey/gin-xorm/controller"
 	_ "github.com/honorjoey/gin-xorm/docs"
-	"github.com/honorjoey/gin-xorm/router/middlewares"
+	"github.com/honorjoey/gin-xorm/router/ginmiddleware"
 	"github.com/honorjoey/gin-xorm/utils"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
@@ -21,9 +21,9 @@ import (
 
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
-	router.Use(middlewares.ErrorHandler)
+	router.Use(ginmiddleware.ErrorHandler)
 
-	router.NoRoute(middlewares.NoRoute)
+	router.NoRoute(ginmiddleware.NoRoute)
 
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
@@ -34,6 +34,9 @@ import (
 
 		name := new(controller.NameController)
 		group.POST("/name", name.GetName)
+
+		sender := new(controller.MsgController)
+		group.POST("/send", sender.SendMessage)
 	}
 
 	return router

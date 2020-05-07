@@ -2,12 +2,12 @@ package controller
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/honorjoey/gin-xorm/db"
+	"github.com/honorjoey/gin-xorm/database"
 	"net/http"
 )
 
 type NameController struct {
-	NameDao db.NameDao
+	NameDao database.NameDao
 }
 
 type NameData struct {
@@ -16,6 +16,7 @@ type NameData struct {
 
 // @Summary Get name value
 // @Description get name value
+// @Accept  json
 // @Produce json
 // @Success 200 {string} string	"ok"
 // @Failure 400 {object} app.Response

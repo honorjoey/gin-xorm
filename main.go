@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"github.com/gin-gonic/gin"
+	"github.com/honorjoey/gin-xorm/cache"
 	"github.com/honorjoey/gin-xorm/router"
 	"log"
 )
@@ -18,6 +19,8 @@ func init() {
 
 func main() {
 	flag.Parse()
+
+	cache.Init()
 
 	gin.SetMode(mode)
 	r := router.Init()

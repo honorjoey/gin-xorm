@@ -3,6 +3,7 @@ module github.com/honorjoey/gin-xorm
 go 1.13
 
 require (
+	github.com/Shopify/sarama v1.26.2
 	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751
 	github.com/cpuguy83/go-md2man/v2 v2.0.0 // indirect
 	github.com/gin-contrib/sessions v0.0.3
@@ -31,11 +32,11 @@ require (
 replace (
 	github.com/honorjoey/gin-xorm/ => ./utils
 	github.com/honorjoey/gin-xorm/config => ./config
-	github.com/honorjoey/gin-xorm/db => ./db
+	github.com/honorjoey/gin-xorm/database => ./database
 	github.com/honorjoey/gin-xorm/docs => ./docs
 	github.com/honorjoey/gin-xorm/log => ./log
 	github.com/honorjoey/gin-xorm/models => ./models
 	github.com/honorjoey/gin-xorm/router => ./router
-	github.com/honorjoey/gin-xorm/router/middlewares => ./router/middlewares
+	github.com/honorjoey/gin-xorm/router/ginmiddleware => ./router/ginmiddleware
 	github.com/honorjoey/gin-xorm/utils => ./utils
 )

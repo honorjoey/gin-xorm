@@ -1,4 +1,4 @@
-package db
+package database
 
 import (
 	"fmt"
@@ -62,7 +62,7 @@ func init() {
 		for _ = range timer.C {
 			err = x.Ping()
 			if err != nil {
-				xLog.Error("db 	connect error: %#v\n", err.Error())
+				xLog.Error("database 	connect error: %#v\n", err.Error())
 			}
 		}
 	}(x)

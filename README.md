@@ -157,7 +157,7 @@ Warnf(format string, v ...interface{})
 import "github.com/honorjoey/gin-xorm/log"
 
 type TLog struct {
-	Log
+	log.Log
 }
 
 var tLog TLog

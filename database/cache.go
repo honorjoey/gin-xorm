@@ -1,10 +1,10 @@
-package db
+package database
 
 import (
 	"github.com/gomodule/redigo/redis"
 )
 
-type NameDao struct {}
+type NameDao struct{}
 
 func (n NameDao) GetName(name string) map[string]string {
 	res := make(map[string]string)
@@ -13,7 +13,7 @@ func (n NameDao) GetName(name string) map[string]string {
 		rLog.Error("Get error", err)
 		return nil
 	}
-	res[name]=str
+	res[name] = str
 	rLog.Infof("%v\n", res)
 	return res
 }
