@@ -7,7 +7,7 @@ ENV PROJECT_PATH $GOPATH/src/github.com/honorjoey/gin-xorm
 WORKDIR $PROJECT_PATH
 COPY . $PROJECT_PATH
 RUN go get -u github.com/swaggo/swag/cmd/swag@v1.6.5 && mv $GOPATH/bin/swag /usr/local/go/bin \
-    swag init
+    && swag init
 RUN go build .
 
 EXPOSE 8080
