@@ -14,6 +14,8 @@ info:
 paths:
   /api/name:
     post:
+      consumes:
+      - application/json
       description: get name value
       produces:
       - application/json
@@ -31,6 +33,38 @@ paths:
           schema:
             $ref: '#/definitions/app.Response'
       summary: Get name value
+  /api/send:
+    post:
+      consumes:
+      - application/json
+      description: kafka producer send message
+      parameters:
+      - description: topic
+        in: query
+        name: topic
+        required: true
+        type: string
+      - description: msg
+        in: query
+        name: msg
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/app.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/app.Response'
+      summary: Send kafka message
   /api/user:
     get:
       description: list user
