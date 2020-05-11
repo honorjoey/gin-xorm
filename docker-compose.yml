@@ -1,0 +1,57 @@
+version: '3'
+
+services:
+
+  mysql:
+    image: mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: token
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - my-bridge
+
+  redis:
+    image: redis
+    command: redis-server --requirepass root
+    networks:
+      - my-bridge
+
+  zookeeper:
+    image: wurstmeister/zookeeper
+    networks:
+      - my-bridge
+
+
+  kafka:
+    image: wurstmeister/kafka
+    environment:
+      KAFKA_BROKER_ID: 0
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://zookeeper:9092
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+    links:
+      - zookeeper
+    networks:
+      - my-bridge
+
+  gin-xorm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    networks:
+      - my-bridge
+
+
+volumes:
+  mysql-data:
+    - /
+
+networks:
+  my-bridge:
+    driver: bridge
