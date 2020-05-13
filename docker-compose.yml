@@ -10,7 +10,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: token
     volumes:
-      - mysql-data:/var/lib/mysql
+      - "mysql-data:/var/lib/mysql"
     networks:
       - my-bridge
 
@@ -39,9 +39,7 @@ services:
       - my-bridge
 
   gin-xorm:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: honorjoey/gin-xorm
     ports:
       - 8080:8080
     networks:
@@ -50,7 +48,6 @@ services:
 
 volumes:
   mysql-data:
-    - /
 
 networks:
   my-bridge:
