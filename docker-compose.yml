@@ -30,11 +30,9 @@ services:
     image: wurstmeister/kafka
     environment:
       KAFKA_BROKER_ID: 0
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://zookeeper:9092
+      KAFKA_ZOOKEEPER_CONNECT: localhost:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
-    links:
-      - zookeeper
     networks:
       - my-bridge
 
