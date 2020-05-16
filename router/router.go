@@ -1,7 +1,7 @@
 package router
 
 import (
-	ginsessions "github.com/gin-contrib/sessions"
+	ginSessions "github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"github.com/gorilla/sessions"
 	"github.com/honorjoey/gin-xorm/controller"
@@ -11,12 +11,12 @@ import (
 	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
-	func Init() *gin.Engine {
+func Init() *gin.Engine {
 	router := gin.New()
 
 	cookieStore := sessions.NewCookieStore([]byte("ss"))
 	store := utils.NewStore(cookieStore)
-	router.Use(ginsessions.Sessions("session_id", store))
+	router.Use(ginSessions.Sessions("session_id", store))
 
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
