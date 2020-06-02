@@ -6,6 +6,7 @@ import (
 	"github.com/gorilla/sessions"
 	"github.com/honorjoey/gin-xorm/controller"
 	_ "github.com/honorjoey/gin-xorm/docs"
+	"github.com/honorjoey/gin-xorm/router/ginmiddleware"
 	"github.com/honorjoey/gin-xorm/utils"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
@@ -23,6 +24,8 @@ func Init() *gin.Engine {
 	//router.Use(ginmiddleware.ErrorHandler)
 
 	//router.NoRoute(ginmiddleware.NoRoute)
+
+	router.Use(ginmiddleware.RequestTime)
 
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
